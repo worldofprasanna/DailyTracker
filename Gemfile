@@ -40,5 +40,6 @@ group :development do
   gem 'spring'
   gem 'pg'
   gem 'pry'
+  gem 'awesome_print'
 end
 
