@@ -2,4 +2,7 @@ case "$1" in
 	'db')
 		sh scripts/resetdb.sh
 	;;
+	'')
+		rails s
+	;;
 esac
