@@ -4,7 +4,8 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    @activity = Activity.new
+    @activity_types = ActivityType.all
   end
 
   # GET /activities/1
@@ -68,6 +69,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:desc, :start, :end, :activity_type)
+      params.require(:activity).permit(:desc, :start, :end, :activity_type_id)
     end
 end
