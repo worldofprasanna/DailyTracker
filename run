@@ -5,4 +5,8 @@ case "$1" in
 	'')
 		rails s
 	;;
+	'migrate')
+		rake db:migrate
+		sh scripts/resetdb.sh
+	;;
 esac
