@@ -41,5 +41,6 @@ group :development do
   gem 'pg'
   gem 'pry'
   gem 'awesome_print'
+  gem 'default_value_for'
 end
 

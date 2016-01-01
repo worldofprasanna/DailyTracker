@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Desc:</strong>
-  <%= @activity.desc %>
+  <strong>Current Date:</strong>
+  <%= @activity.curr_date %>
 </p>
 
 <p>
   <strong>Start:</strong>
-  <%= @activity.start %>
+  <%= @activity.start && @activity.start.strftime("%H:%M (Hour:Min)") %>
 </p>
 
 <p>
   <strong>End:</strong>
-  <%= @activity.end %>
+  <%= @activity.end && @activity.end.strftime("%H%M") %>
 </p>
 
 <p>
