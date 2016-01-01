@@ -2,5 +2,13 @@
 
 <h1>The Good Tracker</h1>
 
+You are currently working on :
+<% if @current_activity.nil? %>
+    No Current activity.
+<% else %>
+    <%= render 'show', activity: @current_activity %>
+<% end %>
+------------- <br/>
+Enter your activity :
 <%= render 'form' %>
 

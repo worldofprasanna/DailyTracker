@@ -6,6 +6,7 @@ class ActivitiesController < ApplicationController
   def index
     @activity = Activity.new
     @activity_types = ActivityType.all
+    @current_activity=Activity.current_activity
   end
 
   # GET /activities/1

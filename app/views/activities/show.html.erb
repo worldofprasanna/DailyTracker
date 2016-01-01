@@ -1,24 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Current Date:</strong>
-  <%= @activity.curr_date %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @activity.start && @activity.start.strftime("%H:%M (Hour:Min)") %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @activity.end && @activity.end.strftime("%H%M") %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @activity.activity_type.name %>
-</p>
-
+<%= render 'show', activity: @activity %>
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>
