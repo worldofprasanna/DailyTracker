@@ -1,27 +1,23 @@
 <%= form_for(activity) do |f| %>
+    <blockquote>
+    <p>
+      <small>Start:</small>
+      <%= activity.start && activity.start.strftime("%H:%M (Hour:Min)") %>
+    </p>
 
     <p>
-  <strong>Current Date:</strong>
-  <%= activity.curr_date %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= activity.start && activity.start.strftime("%H:%M (Hour:Min)") %>
-</p>
-
-<p>
-  <strong>End:</strong>
-    <div class="field">
-      <%= f.text_field :end, :autofocus => true%>
+      <small>End:</small>
+    <span class="field">
+      <%= f.text_field :end, :autofocus => true %>
       <%= f.label "hh:mm" %><br>
-    </div>
-<p>
-  <strong>Type:</strong>
-  <%= activity.activity_type.name %>
-</p>
+    </span>
+    <p>
+      <small>Type:</small>
+      <%= activity.activity_type.name %>
+    </p>
     <div class="actions">
       <%= f.submit %>
     </div>
-
+    </blockquote>
+    <hr />
 <% end %>

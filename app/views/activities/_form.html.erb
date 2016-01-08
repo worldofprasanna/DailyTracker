@@ -1,26 +1,21 @@
 <%= form_for(@activity) do |f| %>
-    <% if @activity.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+    <blockquote>
+      <p>
+      <span class="field clearfix">
+        Start Time (HH:mm):
+        <%= f.text_field :start, :autofocus => true %>
 
-          <ul>
-            <% @activity.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :start %><br>
-      <%= f.text_field :start, :autofocus => true%>
-      <%= f.label "hh:mm" %><br>
-    </div>
-    <div class="field">
-      <%= f.label :activity_type %><br>
+        </span>
+      </p>
+      <p>
+    <span class="field">
+      Activity Type:
       <%= f.collection_select(:activity_type_id, @activity_types, :id, :name, prompt: true) %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+    </span>
+      </p>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+        </blockquote>
 <% end %>
