@@ -5,7 +5,7 @@ class Activity < ActiveRecord::Base
     Date.today
   end
 
-  def self.current_activity
-    Activity.where(:end => nil).order(created_at: :desc).first
+  def self.fetch_all_open_activity
+    Activity.where(:end => nil).order(created_at: :desc).load
   end
 end

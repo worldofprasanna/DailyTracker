@@ -10,12 +10,14 @@ class ActivitiesController < ApplicationController
   def set_index_vals
     @activity = Activity.new
     @activity_types = ActivityType.all
-    @current_activity=Activity.current_activity
+    @current_activity=Activity.fetch_all_open_activity.first
+    @all_open_activity=Activity.fetch_all_open_activity.offset(1)
   end
 
   # GET /activities/1
   # GET /activities/1.json
   def show
+    index
   end
 
   # GET /activities/new
