@@ -4,6 +4,10 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
+    set_index_vals
+  end
+
+  def set_index_vals
     @activity = Activity.new
     @activity_types = ActivityType.all
     @current_activity=Activity.current_activity
@@ -29,7 +33,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+        set_index_vals
+        format.html { render :index }
         format.json { render :show, status: :created, location: @activity }
       else
         format.html { render :new }
@@ -43,7 +48,8 @@ class ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @activity.update(activity_params)
-        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+        set_index_vals
+        format.html { render :index }
         format.json { render :show, status: :ok, location: @activity }
       else
         format.html { render :edit }
