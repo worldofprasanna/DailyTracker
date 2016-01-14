@@ -1,23 +1,26 @@
 <%= form_for(activity) do |f| %>
     <blockquote>
-    <p>
-      <small>Start:</small>
-      <%= activity.start && activity.start.strftime("%H:%M (Hour:Min)") %>
-    </p>
+      <p>
+        <small>Start:</small>
+        <%= activity.start && activity.start.strftime("%H:%M (Hour:Min)") %>
+      </p>
 
-    <p>
-      <small>End:</small>
+      <% if (activity.is_overlapping_allowed) %>
+          <p>
+            <small>End:</small>
     <span class="field">
       <%= f.text_field :end, :autofocus => true %>
       <%= f.label "hh:mm" %><br>
     </span>
-    <p>
-      <small>Type:</small>
-      <%= activity.activity_type.name %>
-    </p>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+          </p>
+      <% end %>
+      <p>
+        <small>Type:</small>
+        <%= activity.activity_type.name %>
+      </p>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
     </blockquote>
-    <hr />
+    <hr/>
 <% end %>
