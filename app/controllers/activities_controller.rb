@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
   def set_index_vals
     @activity = Activity.new
     @activity_types = ActivityType.all
-    @current_activity=Activity.fetch_all_open_activity.first
+    @current_activity=Activity.fetch_current_activity
     @all_open_activity=Activity.fetch_all_open_activity.offset(1)
   end
 
@@ -34,7 +34,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     respond_to do |format|
-      if @activity.save
+      if @activity.save_and_close_prev
         set_index_vals
         format.html { render :index }
         format.json { render :show, status: :created, location: @activity }
