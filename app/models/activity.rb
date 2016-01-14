@@ -32,4 +32,8 @@ class Activity < ActiveRecord::Base
   def activity_name
     self.activity_type.name
   end
+
+  def self.activity_summary
+    Summary.new
+  end
 end
