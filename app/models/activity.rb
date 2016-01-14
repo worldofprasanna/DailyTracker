@@ -6,7 +6,7 @@ class Activity < ActiveRecord::Base
   end
 
   def self.fetch_all_open_activity
-    Activity.where(:end => nil).order(created_at: :desc).load
+    Activity.where(:end_time => nil).order(created_at: :desc).load
   end
 
   def save_and_close_prev
@@ -16,8 +16,8 @@ class Activity < ActiveRecord::Base
   end
 
   def close(end_time)
-    self.end = end_time
-    self.duration = ((self.end - self.start) / 1.minute).round
+    self.end_time = end_time
+    self.duration = ((self.end_time - self.start) / 1.minute).round
     self.save
   end
 
