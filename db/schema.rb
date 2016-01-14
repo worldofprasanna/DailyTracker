@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114124221) do
+ActiveRecord::Schema.define(version: 20160114134555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160114124221) do
     t.datetime "updated_at",       null: false
     t.integer  "activity_type_id"
     t.date     "curr_date"
+    t.integer  "duration"
   end
 
   add_index "activities", ["activity_type_id"], name: "index_activities_on_activity_type_id", using: :btree

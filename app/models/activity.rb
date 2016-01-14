@@ -17,6 +17,7 @@ class Activity < ActiveRecord::Base
 
   def close(end_time)
     self.end = end_time
+    self.duration = ((self.end - self.start) / 1.minute).round
     self.save
   end
 
