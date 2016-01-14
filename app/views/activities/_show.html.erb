@@ -5,7 +5,7 @@
         <%= activity.start && activity.start.strftime("%H:%M (Hour:Min)") %>
       </p>
 
-      <% if (activity.is_overlapping_allowed) %>
+      <% if activity.is_overlapping_allowed %>
           <p>
             <small>End:</small>
     <span class="field">
@@ -16,7 +16,7 @@
       <% end %>
       <p>
         <small>Type:</small>
-        <%= activity.activity_type.name %>
+        <%= activity.activity_name %>
       </p>
       <div class="actions">
         <%= f.submit %>

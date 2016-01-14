@@ -27,4 +27,8 @@ class Activity < ActiveRecord::Base
   def is_overlapping_allowed
     self.activity_type.overlapping
   end
+
+  def activity_name
+    self.activity_type.name
+  end
 end
