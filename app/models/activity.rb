@@ -30,11 +30,7 @@ class Activity < ActiveRecord::Base
   end
 
   def self.fetch_current_activity
-    current_activity = Activity.fetch_all_open_activity.first
-    if current_activity.nil?
-      current_activity = Activity.new
-    end
-    current_activity
+    Activity.fetch_all_open_activity.first
   end
 
   def is_overlapping_allowed

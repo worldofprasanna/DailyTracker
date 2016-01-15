@@ -52,8 +52,8 @@
   <div class="row marketing">
     <div class="col-lg-6 left top-10">
       <div class="well">
-        Your are currently in <code> <%= @current_activity.activity_name %></code>
-        from <%= @current_activity.activity_start_time %>
+        Your are currently in <code> <%= get_activity_name(@current_activity) %></code>
+        from <%= get_activity_start_time(@current_activity) %>
       </div>
     </div>
     <div class="col-lg-6 pull-right top-10">
