@@ -50,12 +50,16 @@
     </div>
   </div>
   <div class="row marketing">
-    <div class="col-lg-5 well left pad-10">
-      Your are currently in <code> <%= @current_activity.activity_name %> </code>
-      from <%= @current_activity.start.strftime("%H:%M (Hour:Min)") %>
+    <div class="col-lg-6 left top-10">
+      <div class="well">
+        Your are currently in <code> <%= @current_activity.activity_name %></code>
+        from <%= @current_activity.activity_start_time %>
+      </div>
     </div>
-    <div class="col-lg-5 well pull-right">
-      You are in <code>Office</code> from <%= @in_office_activity.start.strftime("%H:%M (Hour:Min)") %>
+    <div class="col-lg-6 pull-right top-10">
+      <div class="well">
+        You are in <code>Office</code> from <%= @in_office_activity.activity_start_time %>
+      </div>
     </div>
   </div>
   <div class="row marketing">
