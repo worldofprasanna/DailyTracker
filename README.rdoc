@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Good tracker gives you a picture of where your time is spent at weekly / monthly basis and
+extrapolates the info to say where you ll be in a year.
 
-Things you may want to cover:
+Tech stack :
 
-* Ruby version
+1. Ruby on Rails
+2. Chartkick
+3. Postgres
 
-* System dependencies
+Project is in active development and you can easily clone the project and run the application using ./run script. Use `./run help` for more info.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
