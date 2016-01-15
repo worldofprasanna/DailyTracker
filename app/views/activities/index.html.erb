@@ -49,23 +49,19 @@
       <%= timeline @activity_chart.timeline %>
     </div>
   </div>
-  <div class="well">
-    Your are currently in <code> <%= @current_activity.activity_name %> </code> from <%= @current_activity.start.strftime("%H:%M (Hour:Min)") %>
+  <div class="row marketing">
+    <div class="col-lg-5 well left pad-10">
+      Your are currently in <code> <%= @current_activity.activity_name %> </code>
+      from <%= @current_activity.start.strftime("%H:%M (Hour:Min)") %>
+    </div>
+    <div class="col-lg-5 well pull-right">
+      You are in <code>Office</code> from <%= @in_office_activity.start.strftime("%H:%M (Hour:Min)") %>
+    </div>
   </div>
   <div class="row marketing">
     <div class="col-lg-4">
       <h4>Enter your activity :</h4>
       <%= render 'form' %>
-    </div>
-
-    <div class="col-lg-4">
-      <h4>Your list of open activities :</h4>
-      <% if @all_open_activity.nil? || @all_open_activity.size == 0 %>
-          No Open activities.
-      <% else %>
-          <% @all_open_activity.each { |act| %> <%= render 'show', activity: act %>
-          <% } %>
-      <% end %>
     </div>
   </div>
 

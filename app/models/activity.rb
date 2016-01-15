@@ -9,6 +9,10 @@ class Activity < ActiveRecord::Base
     Activity.where(:end_time => nil).order(created_at: :desc).load
   end
 
+  def self.fetch_in_office_activity
+    Activity.where(:activity_type_id => 1, :curr_date => Date.today).first
+  end
+
   def save_and_close_prev
     curr_activity = Activity.fetch_current_activity
     curr_activity.close(self.start) unless curr_activity.nil? || curr_activity.is_overlapping_allowed

@@ -11,8 +11,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
     @activity_types = ActivityType.all
     @current_activity=Activity.fetch_current_activity
-    @all_open_activity=Activity.fetch_all_open_activity.offset(1)
     @activity_chart=Activity.activity_summary
+    @in_office_activity=Activity.fetch_in_office_activity
   end
 
   # GET /activities/1
