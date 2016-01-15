@@ -9,4 +9,12 @@ case "$1" in
 		rake db:migrate
 		sh scripts/resetdb.sh
 	;;
+	'help')
+		echo 'Use ./run migrate - to create and migrate db'
+		echo 'Use ./run db - to clear db'
+		echo 'Use ./run - to run application'
+	;;
+	*)
+		echo 'Use ./run help to know more'
+	;;
 esac
