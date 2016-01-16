@@ -1,0 +1,16 @@
+<%= form_for @in_office_activity, :html => {:id => 'in_office_form'} do |f| %>
+    <p>
+      <span class="field clearfix">
+        <span>
+        Hour:
+        <input type="text" id="office_hours" placeholder="HH" class="width-35"/>
+          </span>
+        <span>
+          Min:
+        <input type="text" id="office_min" placeholder="mm" class="width-35"/>
+          </span>
+        <%= f.hidden_field :end_time, :id => 'office_end_time'%>
+        </span>
+    </p>
+
+<% end %>

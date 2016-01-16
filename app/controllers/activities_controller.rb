@@ -50,7 +50,7 @@ class ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1.json
   def update
     respond_to do |format|
-      if @activity.update(activity_params)
+      if @activity.update_activity(activity_params)
         set_index_vals
         format.html { render :index }
         format.json { render :show, status: :ok, location: @activity }

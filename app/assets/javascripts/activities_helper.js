@@ -10,12 +10,29 @@ $(document).ready(function () {
         }
     });
 
+    $('#office_hours').keyup(function(){
+        var hours = $('#office_hours').val();
+        if (hours.length == 2) {
+            $('#office_end_time').val(hours);
+            $('#office_min').focus();
+        }
+    });
+
     $('#min').keyup(function(){
         var min = $('#min').val();
         if (min.length == 2) {
             var time = $('#start_time').val() +':' +min;
             $('#start_time').val(time);
             $('#activity_activity_type_id').focus();
+        }
+    });
+
+    $('#office_min').keyup(function(){
+        var min = $('#office_min').val();
+        if (min.length == 2) {
+            var time = $('#office_end_time').val() +':' +min;
+            $('#office_end_time').val(time);
+            $('#in_office_form').submit();
         }
     });
 
@@ -28,7 +45,9 @@ $(document).ready(function () {
 
         var option_selected = event.keyCode - 48;
         $('#activity_activity_type_id').val(option_selected);
-        $('#new_activity').submit();
+        $('#activity_form').submit();
     });
+
+
 
 });

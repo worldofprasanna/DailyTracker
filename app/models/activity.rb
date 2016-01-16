@@ -25,8 +25,14 @@ class Activity < ActiveRecord::Base
 
   def close(end_time)
     self.end_time = end_time
-    self.duration = ((self.end_time - self.start_time) / 1.minute).round
+    self.duration = calculate_duration(self.start_time, self.end_time)
     self.save
+  end
+
+  def update_activity(params)
+    self.end_time = params[:end_time]
+    self.duration = calculate_duration(self.start_time, self.end_time)
+    self.update(params)
   end
 
   def self.fetch_current_activity
@@ -55,5 +61,10 @@ class Activity < ActiveRecord::Base
 
   def self.activity_summary
     Summary.new
+  end
+
+  private
+  def calculate_duration(start_time, end_time)
+    ((end_time - start_time) / 1.minute).round
   end
 end
