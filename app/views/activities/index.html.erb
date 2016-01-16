@@ -28,10 +28,10 @@
 
   <div class="row marketing">
     <div class="col-lg-6 height-300 left">
-      <%= pie_chart @activity_chart.activity_duration %>
+      <%= draw_summary_chart(@activity_chart.activity_duration) %>
     </div>
     <div class="col-lg-6 height-300 right">
-      <%= timeline @activity_chart.timeline %>
+      <%= draw_timeline_chart(@activity_chart.timeline) %>
     </div>
   </div>
   <div class="row">
