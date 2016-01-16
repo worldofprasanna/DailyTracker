@@ -10,23 +10,21 @@ module ActivitiesHelper
   end
 
   def draw_timeline_chart(time_line)
-    # binding.pry
     if time_line.size == 0
-      chart = (timeline [['NO-DATA', '00:00'.to_time, '01:00'.to_time]])
+      chart_data = [['NO-DATA', '00:00'.to_time, '01:00'.to_time]]
     elsif
-      chart = (timeline time_line)
+      chart_data = time_line
     end
-    chart
+    timeline chart_data
   end
 
   def draw_summary_chart(activity_duration)
     if activity_duration.size == 0
-      start_data = {'NO-DATA' => 30}
-      chart = (pie_chart start_data)
+      chart_data = {'NO-DATA' => 30}
     elsif
-      chart = (pie_chart activity_duration)
+      chart_data = activity_duration
     end
-    chart
+    pie_chart chart_data
   end
 
 end
