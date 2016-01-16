@@ -6,21 +6,28 @@ class Activity < ActiveRecord::Base
   end
 
   def self.fetch_all_open_activity
-    Activity.where(:end_time => nil).order(created_at: :desc).load
+    Activity.where("end_time is null and activity_type_id <> ?", 9 ).order(created_at: :desc).load
   end
 
   def self.fetch_in_office_activity
-    in_office_activity = Activity.where(:activity_type_id => 1, :curr_date => Date.today).first
-    if in_office_activity.nil? then
-      in_office_activity = Activity.new
-    end
-    in_office_activity
+     Activity.where(:activity_type_id => 9, :curr_date => Date.today, :end_time => nil).first
   end
 
-  def save_and_close_prev
+  def save_and_close_prev(time)
     curr_activity = Activity.fetch_current_activity
-    curr_activity.close(self.start_time) unless curr_activity.nil? || curr_activity.is_overlapping_allowed
+    curr_activity.close(time) unless curr_activity.nil? || curr_activity.is_overlapping_allowed
+    Activity.create_in_office(self.start_time)
     self.save
+  end
+
+  def self.create_in_office(start_time)
+    in_office_activity = Activity.fetch_in_office_activity
+    if in_office_activity.nil? then
+      in_office_activity = Activity.new
+      in_office_activity.start_time= start_time
+      in_office_activity.activity_type = ActivityType.get_in_office_activity
+      in_office_activity.save
+    end
   end
 
   def close(end_time)
@@ -32,6 +39,7 @@ class Activity < ActiveRecord::Base
   def update_activity(params)
     self.end_time = params[:end_time]
     self.duration = calculate_duration(self.start_time, self.end_time)
+    self.save_and_close_prev(self.end_time)
     self.update(params)
   end
 

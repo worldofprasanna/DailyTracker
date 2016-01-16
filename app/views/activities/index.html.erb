@@ -43,8 +43,8 @@
     </div>
     <div class="col-lg-6 pull-right top-10">
       <div class="well">
-        <span>You are in <code>Office</code> from <%= @in_office_activity.activity_start_time %>. Leave </span>
-        <span class="inline-form"><%= render 'in_office_form' %></span>
+        <span>You are in <code>Office</code> from <%= get_activity_start_time(@in_office_activity) %></span>
+        <span class="inline-form"><%= render 'in_office_form' unless @in_office_activity.nil? %></span>
       </div>
     </div>
   </div>
@@ -57,10 +57,10 @@
         </div>
         <table class="table table-striped small-font">
           <tr>
-            <td>1. IN-OFFICE</td>
-            <td>2. DEV-HUDDLE</td>
-            <td>3. PET-PROJECT</td>
-            <td>4. PAIRING</td>
+            <td>1. DEV-HUDDLE</td>
+            <td>2. PET-PROJECT</td>
+            <td>3. PAIRING</td>
+            <td>4. STAND-UP</td>
           </tr>
           <tr>
             <td>5. MEETING</td>
