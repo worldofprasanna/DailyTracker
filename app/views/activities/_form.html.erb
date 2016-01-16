@@ -1,19 +1,24 @@
 <%= form_for(@activity) do |f| %>
     <p>
       <span class="field clearfix">
-        Start Time (HH:mm):
-        <%= f.text_field :start_time, :autofocus => true, :placeholder => "HH:mm" %>
+        <span>
+        <small>Start Hour:</small>
+        <input type="text" id="hours" placeholder="HH" class="width-35"/>
+          </span>
+        <span>
+          <small>Start Min:</small>
+        <input type="text" id="min" placeholder="mm" class="width-35"/>
+          </span>
+        <%= f.hidden_field :start_time, :id => 'start_time'%>
         </span>
     </p>
     <p>
     <span class="field">
-      Activity Type:
+      <small>Type (1 - 8):</small>
       <%= f.collection_select(:activity_type_id, @activity_types, :id, :name, prompt: true) %>
     </span>
-    </p>
 
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
+    </p>
 
 <% end %>

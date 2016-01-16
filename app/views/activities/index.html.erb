@@ -30,11 +30,11 @@
     <div class="col-lg-6 height-300 left">
       <%= pie_chart @activity_chart.activity_duration %>
     </div>
-    <div class="col-lg-6 height-300 right timeline-chart">
+    <div class="col-lg-6 height-300 right">
       <%= timeline @activity_chart.timeline %>
     </div>
   </div>
-  <div class="row marketing">
+  <div class="row">
     <div class="col-lg-6 left top-10">
       <div class="well">
         Your are currently in <code> <%= get_activity_name(@current_activity) %></code>
@@ -47,26 +47,28 @@
       </div>
     </div>
   </div>
-  <div class="row marketing">
+  <div class="row margin-10">
     <div class="col-lg-offset-2 col-lg-8 panel panel-default">
-    <div class=" col-lg-6 panel-body">
-      <h4>Enter your activity :</h4>
-      <%= render 'form' %>
-    </div>
-    <div class="col-lg-6 pad-10">
-      <div class="list-group small col-lg-6">
-        <div class="list-group-item ">1. IN-OFFICE</div>
-        <div class="list-group-item">2. DEV-HUDDLE</div>
-        <div class="list-group-item">3. PET-PROJECT</div>
-        <div class="list-group-item">4. PAIRING</div>
+      <div class="col-lg-offset-2 col-lg-8 panel-body pad-10">
+        <div class="text-center">
+          <h4>Enter your activity :</h4>
+          <%= render 'form' %>
+        </div>
+        <table class="table table-striped small-font">
+          <tr>
+            <td>1. IN-OFFICE</td>
+            <td>2. DEV-HUDDLE</td>
+            <td>3. PET-PROJECT</td>
+            <td>4. PAIRING</td>
+          </tr>
+          <tr>
+            <td>5. MEETING</td>
+            <td>6. TT</td>
+            <td>7. NOTHING</td>
+            <td>8. READING-NEWS</td>
+          </tr>
+        </table>
       </div>
-      <div class="list-group small col-lg-6">
-        <div class="list-group-item">5. MEETING</div>
-        <div class="list-group-item">6. TT</div>
-        <div class="list-group-item">7. NOTHING</div>
-        <div class="list-group-item">8. READING-NEWS</div>
-      </div>
-    </div>
     </div>
   </div>
 

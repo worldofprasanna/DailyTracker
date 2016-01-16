@@ -6,10 +6,6 @@
   border-right: 1px dashed #333;
 }
 
-.timeline-chart{
-  top: 125px;
-}
-
 .top-10{
   padding-top: 10px;
 }
@@ -20,4 +16,18 @@
 
 .pad-10{
   padding: 10px 10px 10px 10px;
+}
+
+.width-35{
+  width:35px;
+}
+
+table.small-font{
+  td, th {
+    font-size: 75%;
+  }
+}
+
+.margin-10{
+  margin: 10px 10px 10px 10px;
 }
