@@ -17,6 +17,7 @@ class Activity < ActiveRecord::Base
     curr_activity = Activity.fetch_current_activity
     curr_activity.close(time) unless curr_activity.nil? || curr_activity.is_overlapping_allowed
     Activity.create_in_office(self.start_time)
+    self.duration=1
     self.save
   end
 
