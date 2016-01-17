@@ -71,6 +71,12 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def clear_activities
+    Activity.delete_all
+    set_index_vals
+    render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
