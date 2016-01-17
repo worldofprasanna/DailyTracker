@@ -1,6 +1,20 @@
 $(document).ready(function () {
 
     $('#hours').focus();
+    
+    $('#hours').focusin(function(){
+        $('#hours').val('');
+    });
+    $('#office_hours').focusin(function(){
+        $('#office_hours').val('');
+    });
+    $('#min').focusin(function(){
+        $('#min').val('');
+    });
+    $('#office_min').focusin(function(){
+        $('#office_min').val('');
+    });
+
 
     $('#hours').keyup(function(){
         var hours = $('#hours').val();
