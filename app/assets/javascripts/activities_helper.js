@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $('#hours').focus();
-    
+
     $('#hours').focusin(function(){
         $('#hours').val('');
     });
