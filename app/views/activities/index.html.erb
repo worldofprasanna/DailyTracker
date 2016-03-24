@@ -43,8 +43,8 @@
     </div>
     <div class="col-lg-6 pull-right top-10">
       <div class="well">
-        <span>You are in <code>Office</code> from <%= get_activity_start_time(@in_office_activity) %></span>
-        <span class="inline-form"><%= render 'in_office_form' unless @in_office_activity.nil? %></span>
+        <span>You are in <code>Office</code> from <%= get_activity_start_time(@in_office_activity.first) %></span>
+        <span class="inline-form"><%= render 'in_office_form' unless @in_office_activity.blank? %></span>
       </div>
     </div>
   </div>

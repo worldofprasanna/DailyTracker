@@ -5,13 +5,8 @@ class Activity < ActiveRecord::Base
     Date.today
   end
 
-  def self.fetch_all_open_activity
-    Activity.where("end_time is null and activity_type_id <> ?", 9 ).order(created_at: :desc).load
-  end
-
-  def self.fetch_in_office_activity
-     Activity.where(:activity_type_id => 9, :curr_date => Date.today, :end_time => nil).first
-  end
+  scope :fetch_all_open_activity, -> { where(end_time: nil).joins(:activity_type).where.not(activity_types: { name: 'IN-OFFICE' }) }
+  scope :fetch_in_office_activity, -> { where(curr_date: Date.today).where(end_time: nil).joins(:activity_type).where(activity_types: { name: 'IN-OFFICE' }) }
 
   def save_and_close_prev(time)
     curr_activity = Activity.fetch_current_activity
@@ -45,7 +40,7 @@ class Activity < ActiveRecord::Base
   end
 
   def self.fetch_current_activity
-    Activity.fetch_all_open_activity.first
+    fetch_all_open_activity.first
   end
 
   def is_overlapping_allowed

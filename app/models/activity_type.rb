@@ -1,11 +1,8 @@
 class ActivityType < ActiveRecord::Base
 
-  def self.all_but_in_office
-    ActivityType.where.not(:name => 'IN-OFFICE')
-  end
+  has_many :activities
 
-  def self.get_in_office_activity
-    ActivityType.where(:name => 'IN-OFFICE').first
-  end
+  scope :all_but_in_office, -> { where.not(name: 'IN-OFFICE') }
+  scope :get_in_office_activity, -> { where(name: 'IN-OFFICE') }
 
 end
