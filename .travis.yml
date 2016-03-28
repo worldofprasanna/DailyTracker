@@ -6,3 +6,4 @@ rvm:
 
 before_script:
   - psql -c 'create database activities_tracker_test;' -U postgres
+  - rake db:migrate RAILS_ENV=test
