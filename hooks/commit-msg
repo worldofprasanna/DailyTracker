@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+message_file = ARGV[0]
+message = File.read(message_file).strip
+regex = /^(?<story>[\w|-]*):(?<author>[\w\/]*):(?<message>[\w\s]{10,})$/
+commit_data=regex.match(message)
+if !commit_data
+  puts "[POLICY] Your message is not formatted correctly"
+  exit 1
+else
+  puts "Commit added successfully."
+  puts "Details :"
+  puts "--------------------------------------"
+  puts "Story - #{commit_data['story']}" 
+  puts "Author - #{commit_data['author']}"
+  puts "Message - #{commit_data['message']}"
+  puts "--------------------------------------"
+  exit 0
+end
