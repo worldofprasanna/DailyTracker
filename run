@@ -14,6 +14,10 @@ case "$1" in
 		echo 'Use ./run db - to clear db'
 		echo 'Use ./run - to run application'
 	;;
+	'deploy')
+	    bundle exec rake package
+	    ansible
+	;;
 	*)
 		echo 'Use ./run help to know more'
 	;;

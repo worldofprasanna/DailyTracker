@@ -1,0 +1,4 @@
+dbname: activities_tracker
+dbuser: tracker
+dbpassword: pass
+postgresql_version: 9.1

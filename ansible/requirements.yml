@@ -1,0 +1,6 @@
+#install ruby
+- src: JhovaniC.ruby
+
+#install monit
+- src: williamyeh.monit
+

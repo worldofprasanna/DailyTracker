@@ -1,0 +1,20 @@
+---
+  - name: create necessary directories
+    file: path={{app_root_path}} state=directory
+    sudo: yes
+
+  - debug: msg="src - {{local_app_path}}/{{app_name}}-development.zip , dest - {{app_root_path}}/"
+
+  - name: Copying the ror app zip from local to vm
+    sudo: yes
+    copy: src={{local_app_path}}/{{app_name}}-development.zip  dest={{app_root_path}}/{{app_name}}-development.zip
+
+  - name: Unarchiving the package
+    sudo: yes
+    unarchive: src={{app_root_path}}/{{app_name}}-development.zip dest={{app_root_path}} copy=no owner={{ansible_user_id}} group={{ansible_user_id}}
+
+  - name: bundle install
+    command: bundle install chdir={{app_root_path}}/{{app_name}}-development
+    environment:
+      PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/bin"
+

@@ -1,0 +1,26 @@
+- name: install postgresql
+  apt: name={{item}}
+  with_items:
+   - postgresql
+   - libpq-dev
+   - python-psycopg2
+
+- name: postgresql should listen on all ports
+  lineinfile: dest=/etc/postgresql/9.1/main/postgresql.conf
+              regexp="^listen_addresses"
+              line="listen_addresses = '*'" state=present
+
+- name: configure pg_hba.conf
+  template:
+    src: pg_hba.conf.j2
+    dest: "/etc/postgresql/9.1/main/pg_hba.conf"
+  notify: restart postgres
+
+- name: ensure database is created
+  postgresql_db: name={{dbname}}
+
+- name: ensure user has access to database
+  postgresql_user: db={{dbname}} name={{dbuser}} password={{dbpassword}} priv=ALL
+
+- name: ensure user does not have unnecessary privilege
+  postgresql_user: name={{dbuser}} role_attr_flags=NOSUPERUSER,NOCREATEDB

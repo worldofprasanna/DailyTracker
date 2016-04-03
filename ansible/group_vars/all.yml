@@ -1,0 +1,4 @@
+app_name: thegoodtracker
+app_root_path: /opt/apps
+ansible_user_id: vagrant
+local_app_path: ../pkg
