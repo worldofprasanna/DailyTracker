@@ -19,6 +19,6 @@ case "$1" in
 	    ansible
 	;;
 	*)
-		echo 'Use ./run help to know more'
+		echo 'Use ./run help to know more.'
 	;;
 esac
