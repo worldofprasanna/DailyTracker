@@ -16,6 +16,9 @@
     dest: "/etc/postgresql/9.1/main/pg_hba.conf"
   notify: restart postgres
 
+- name: Restart postgres manually
+  service: name=postgresql state=restarted
+
 - name: ensure database is created
   postgresql_db: name={{dbname}}
 

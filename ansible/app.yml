@@ -4,5 +4,6 @@
   user: vagrant
   sudo: yes
   roles:
-    - role: thegoodtracker
+    - common/dev-setup
+    - thegoodtracker
 

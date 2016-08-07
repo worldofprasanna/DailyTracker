@@ -1,0 +1,23 @@
+---
+
+- name: Update apt repository
+  apt_repository: repo='ppa:nmi/vim-snapshots' state=present
+
+- name: Install vim using apt-get
+  apt: name=vim state=present update_cache=yes
+
+- name: Install git
+  apt: name=git state=present
+
+- name: Install vundle
+  git: repo=https://github.com/VundleVim/Vundle.vim.git dest=/home/vagrant/.vim/bundle/Vundle.vim
+
+- name: Copy the local .vimrc file
+  copy: src=.vimrc dest=/home/vagrant/
+
+- name: Set permission for .vim folder
+  file: path=/home/vagrant/.vim/ owner=vagrant group=vagrant recurse=yes
+
+  #- name: Install vundle plugins
+  #command: vim +PluginInstall +qall
+  # Manually install plugins using :PluginInstall command. This is taking lot of time.
